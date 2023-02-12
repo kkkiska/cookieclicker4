@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  user-select: none;
+  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Balsamiq Sans', cursive; */
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  padding: .5%;
+  height: 13vh;
+}
+
+.icon {
+  width: 80px;
+}
+
+.title {
+  align-items: center;
+  display: flex;
+  font-size: 30px;
+  font-family: 'Balsamiq Sans';
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 30px;
+}
+.game-panel {
+  background: url(bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5%;
+  /* justify-content: center; */
+  height: 65vh;
+}
+
+.balance-bar {
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2%;
+}
+
+.money-now {
+  font-size: 40px;
+  font-weight: 700;
+}
+.money-sec {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.cookie {
+  margin-top: 3%;
+  width: 350px ;
+  cursor: pointer;
+  border-radius: 75px;
+}
+
+.cookie img {
+  border-radius: 75px;
+}
+
+.game-items {
+ align-items: center;
+ display: flex;
+ justify-content: space-around;
+ height: 20vh;
+}
+
+.game-button {
+  margin: 1%;
+  flex-direction: column;
+  display: flex;
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  align-items: end;
+}
+
+.game-button:hover {
+  box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.35), 0px 5px 5px rgba(0, 0, 0, 0.35);
+}
+
+.game-button-main-info {
+  margin-top: 6%;
+  display: flex;
+}
+
+
+.game-button img {
+  margin: auto 0 auto 2%;
+  height: 80px;
+}
+
+.game-button-info {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-button-price {
+  font-family: 'Balsamiq Sans';
+  font-weight: 700;
+  font-size: 30px;
+  color: red;
+  font-weight: 700;
+}
+
+.game-button-name {
+  font-size: 20px;
+}
+
+.game-button-more {
+  background-color: #477BFF;
+  width: 25%;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+  margin-bottom: -1.3%;
+}
+
+.container-game-quantity {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-weight: 700;
+  align-items: center;
+  background-color: #477BFF;
+  border-radius: 5px;
+}
+
+.game-quantity-text {
+  margin-left: 8%;
+}
+
+.game-button-quantity {
+  margin: auto;
+  font-size: 20px;
+}

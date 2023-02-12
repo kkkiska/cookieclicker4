@@ -1,0 +1,289 @@
+.action-button {
+  display: none;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(202.25deg, rgba(182, 152, 109) 7.96%, #875A34);;
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 5px solid #4B261B;
+  border-radius: 72px;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-button:hover {
+  box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.35), 0px 5px 5px rgba(0, 0, 0, 0.35);
+}
+
+.action-button img {
+  width: 70%;
+}
+
+.action-button-text {
+  display: none;
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.action-button-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+}
+
+.action-all-buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.game-items.active {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffffea;
+  z-index: 1000;
+}
+
+.game-panel.horizontal {
+  flex-direction: row;
+}
+
+.game-panel.horizontal .action-all-buttons-container {
+  flex-direction: column;
+  height: 350px;
+}
+
+/* скрывает 3 кнопки */
+/* @media screen and (max-height: 798px ) {
+    .game-items {
+      display: none;
+    }
+    
+    .game-panel {
+      height: 70vh;
+    }
+  
+    header {
+      height: 20vh;
+    }
+} */
+
+@media screen and (max-height:/*720px*/ 798px ),
+  screen and (max-width: 1100px) {
+  .game-items {
+    display: none;
+  }
+  
+  .game-panel {
+    background:none;
+    height: 100vh;
+    justify-content: center;
+  }
+
+  body {
+    background: url(../stuff/bgfull.jpg);
+    background-repeat: no-repeat;
+    background-size: cover
+  }
+
+  header {
+    position: absolute;
+    height: 20%;
+  }
+
+  .action-button-container {
+    top: auto;
+  }
+
+  .action-button {
+    display: flex;
+  }
+
+  .action-button-text {
+    display: flex;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 1000px),
+screen and (max-height: 720px) {
+  header {
+    position: absolute;
+    height: 15%;
+  }
+
+  .icon {
+    width: 25%;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  .cookie {
+    width: 250px;
+  }
+
+  .money-now {
+    font-size: 30px;
+  }
+  .money-sec {
+    font-size: 20px;
+  }
+
+  .action-button {
+    width: 80px;
+    height: 80px;
+  }
+
+  .action-button-text {
+    font-size: 20px;
+  }
+
+
+}
+
+@media screen and (max-width: 650px),
+  screen and (max-height: 650px) {
+    .game-button {
+      margin: .5%;
+    }
+
+    .game-button img {
+      margin: auto 0 auto 1.5%;
+      height: 70px;
+      width: 70px;
+    }
+
+    .game-button-main-info {
+      margin-top: 2%;
+    }
+
+    .game-button-info {
+      width: 180px;
+    }
+
+    .game-button-price {
+      font-size: 25px;
+    }
+    .game-button-more {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .container-game-quantity {
+      font-size: 12px;
+    }
+
+    .game-button-quantity {
+      font-size: 16px;
+    }
+  }
+
+@media screen and (max-width: 550px),
+  screen and (max-height: 550px) {
+  .cookie {
+    width: 200px;
+  }
+
+  .money-now {
+    font-size: 25px;
+  }
+  .money-sec {
+    font-size: 17px;
+  }
+  header {
+    height: 90px;
+  }
+
+  .icon {
+    width: 20%;
+  }
+
+  .title {
+    font-size: 15px;
+    margin-left: 20px;
+  }
+
+  .action-button {
+    width: 70px;
+    height: 70px;
+  }
+
+  .action-button-text {
+    font-size: 18px;
+  }
+
+  .game-panel.horizontal .action-all-buttons-container {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 400px),
+  screen and (max-height: 400px) {
+  .cookie {
+    width: 160px;
+  }
+
+  .money-now {
+    font-size: 22px;
+  }
+  .money-sec {
+    font-size: 15px;
+  }
+  header {
+    height: 60px;
+  }
+
+  .icon {
+    width: 20%;
+  }
+
+  .title {
+    font-size: 15px;
+    margin-left: 20px;
+  }
+
+  .buy-button {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #4B261B;
+  }
+
+  .buy-button-text {
+    display: flex;
+    font-size: 15px;
+  }
+
+  .action-button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .action-button-text {
+    font-size: 15px;
+  }
+
+  .game-panel.horizontal .action-all-buttons-container {
+    height: 250px;
+  }
+}
+
+.blackscreen {
+  display: none;
+  position: absolute;
+  width: 150vw;
+  height: 150vh;
+  background-color: black;
+  top: 0;
+}
+
+

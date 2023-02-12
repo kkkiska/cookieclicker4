@@ -1,0 +1,117 @@
+const moneyItem = document.querySelector ("#moneyItem")
+const moneySecItem = document.querySelector ("#moneySecItem")
+const cookie = document.querySelector (".cookie")
+
+const gameButtons = document.querySelectorAll (".game-button")
+const gameButtonsOptionsObj = {
+  gameButtons: document.querySelectorAll (".game-button"),
+  gameButtonsPrice: document.querySelectorAll (".game-button-price"),
+  gameButtonsQuantity: document.querySelectorAll (".game-button-quantity")
+}
+var gameButtonsObjLength = 0;
+for (let i in gameButtonsObj) {gameButtonsObjLength++;}
+
+var objList = {
+  userObj: {},
+  clickerObj: {},
+  grannyObj: {},
+  factoryObj: {}
+}
+
+objList.userObj = {
+  moneyValue: 0,
+  moneySecValue: 0
+}
+
+objList.clickerObj = {
+  priceValue: 10,
+  quantityValue: 0,
+  increaseSec: 1,
+}
+
+objList.grannyObj = {
+  priceValue: 100,
+  quantityValue: 0,
+  increaseSec: 10,
+};
+
+objList.factoryObj = {
+  priceValue: 1000,
+  quantityValue: 0,
+  increaseSec: 100
+};
+
+cookie.addEventListener ("click", () => {
+  objList.userObj.moneyValue = objList.userObj.moneyValue + 1;
+  moneyItem.textContent = objList.userObj.moneyValue;
+});
+
+window.onload = function LoadData() {
+    if (localStorage.getItem('objList') === null) {
+      return;
+    }
+    objList = JSON.parse(localStorage.getItem('objList'));
+    moneyItem.textContent = objList.userObj.moneyValue;
+    moneySecItem.textContent = objList.userObj.moneySecValue;
+    for (let gameElementObjIndex = 1; gameElementObjIndex < gameButtonsObjLength; gameElementObjIndex++ ) {
+      var certainAllElementsObj = Object.values(gameButtonsObj)[gameElementObjIndex];
+      certainAllElementsObj.forEach((certainElement, certainElementIndex) => {
+        var certainGameObj = Object.values(objList)[certainElementIndex + 1];
+        if (gameElementObjIndex == 1) {
+          certainElement.textContent = certainGameObj[Object.keys(certainGameObj)[gameElementObjIndex - 1]] + "$";
+        } else {
+          certainElement.textContent = certainGameObj[Object.keys(certainGameObj)[gameElementObjIndex - 1]];
+        }
+        })
+    }
+}
+
+setInterval(() => {
+  localStorage.setItem ("objList", JSON.stringify(objList));
+  Frame();
+}, 1000);
+
+function Frame() {
+  objList.userObj.moneyValue = objList.userObj.moneyValue + objList.userObj.moneySecValue;
+  moneyItem.textContent = objList.userObj.moneyValue;
+  gameButtonsObj.gameButtonsPrice.forEach ((certainGameButton, gameButtonIndex) => {
+    var certainGameObj = Object.values(objList)[gameButtonIndex + 1];
+    if (objList.userObj.moneyValue >= certainGameObj.priceValue) {
+      certainGameButton.style.color = "green"
+    } else {
+      certainGameButton.style.color = "red"
+    }
+  })
+}
+
+gameButtonsObj.gameButtons.forEach((certainGameButton, gameButtonIndex) => {
+  certainGameButton.addEventListener ("click", () => {
+    var certainGameObj = Object.values(objList)[gameButtonIndex + 1];
+    certainGameObj = Interaction (certainGameObj, gameButtonIndex)
+    objList[Object.keys(objList)[gameButtonIndex + 1]] = certainGameObj;
+  })
+})
+
+function Interaction (certainGameObj, gameButtonIndex) {
+  if (objList.userObj.moneyValue >= certainGameObj.priceValue) {
+    objList.userObj.moneyValue = objList.userObj.moneyValue - certainGameObj.priceValue;
+    certainGameObj.priceValue = Math.round(certainGameObj.priceValue * 1.15);
+    certainGameObj.quantityValue = certainGameObj.quantityValue + 1;
+    objList.userObj.moneySecValue = objList.userObj.moneySecValue + certainGameObj.increaseSec; 
+    var counter = 0;
+    for (let gameButtonElementIndex = 1; gameButtonElementIndex < gameButtonsObjLength; gameButtonElementIndex++ ) {
+      var certainElementObj = Object.values(gameButtonsObj)[gameButtonElementIndex];
+      var certainElement = Object.values(certainElementObj)[gameButtonIndex];
+      if (gameButtonElementIndex == 1) {
+        certainElement.textContent = Object.values(certainGameObj)[gameButtonElementIndex - 1] + "$";
+      } else {
+        certainElement.textContent = Object.values(certainGameObj)[gameButtonElementIndex - 1];
+      }
+      gameButtonsObj[Object.keys(gameButtonsObj)[gameButtonElementIndex]] = certainElementObj;
+    }
+    moneySecItem.textContent = objList.userObj.moneySecValue;
+  } else {
+    alert ("У вас недостаточно денег!")
+  }
+  return certainGameObj;
+}
